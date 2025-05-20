@@ -15,6 +15,16 @@ def on_connect(client, userdata, flags, rc):
     else:
         print("Verbindung fehlgeschlagen")
 
+def on_connect2(client, userdata, flags, rc):
+            if rc == 0:
+                print("Verbindung hergestellt")
+                client.subscribe(SUBSCRIBE_TOPIC)
+            else:
+                print("Verbindung fehlgeschlagen")
+
+
+
+
 def on_message(client, userdata, msg):
     print({msg.payload.decode()})
     client.publish(PUBLISH_TOPIC, msg.payload.decode())
